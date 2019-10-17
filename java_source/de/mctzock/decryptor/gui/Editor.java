@@ -88,6 +88,7 @@ public class Editor {
 		frame.setJMenuBar(menu);
 		frame.setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 1234, 961);
+		frame.setAlwaysOnTop(true);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
