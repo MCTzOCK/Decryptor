@@ -80,8 +80,10 @@ public class Animal_compile {
 	public static char[] rabbit_cylinder_sandals_purple		= {  'û',	 '½',	'Â',	 'Ò',	 'É',	 '³',	 'Ï',	'Å',	  'è',	 '¤',	 '¨',	 '™',	 '}',	 '¡',	 '÷',	 '·',	'ý',	 'µ',	 '&',	 'Í',	 '~',	 '|',	 '[',	 ']',	 '×',	 '—',	 '°',	 'Ó',	 '¸',	 '‰',	 '%',	 'î',	 'ê',	 'Ê',	  'ò',	 '©',	 'í',	 '¾',	 '>',	 '\\',	 'Ì',	'È',	 '*',	 '{',	 '<',	'À',	 'ù', 	 '¶',	 '"',	'@',	 'Ã',	 'Æ',	 '¯',	 'ó',	 'ú',	  'Ô',	 '§',	 'é',	  'Ç',	 '¿',	 '²',	 '«',	 'Ø',	'Á',	 'ì',	 'Î',	  '$',	 'ô',	 '£',	 '^',	 '+',	 '¹',	 'Ë',	 '¥',	 '-',	 '®',	 '±'};
 	public static char[] rabbit_cylinder_sandals_yellow		= {  '½',	'Â',	 'Ò',	 'É',	 '³',	 'Ï',	'Å',	  'è',	 '¤',	 '¨',	 '™',	 '}',	 '¡',	 '÷',	 '·',	'ý',	 'µ',	 '&',	 'Í',	 '~',	 '|',	 '[',	 ']',	 '×',	 '—',	 '°',	 '*',	 'Ê',	 '©',	 '<',	 '¾',	 '{',	 'í',	'È',	 '‰',	 '>',	'@',	 '¸',	 '¯',	 'ê',	 '"',	 'Ã',	 'Æ',	  'ò',	 'Ó',	 '%',	 'ù', 	 'Ì',	'À',	 '¶',	 '\\',	 'î',	 'ó',	 'ú',	  'Ô',	 '§',	 'é',	  'Ç',	 '¿',	 '²',	 '«',	 'Ø',	'Á',	 'ì',	 'Î',	  '$',	 'ô',	 '£',	 '^',	 '+',	 '¹',	 'Ë',	 '¥',	 '-',	 '®',	 '±',	  'û'};
 	
+	public static long starttime = 0;
 	@SuppressWarnings("unlikely-arg-type")
 	public static void compile(String text, String animal) throws Exception {
+		starttime = System.currentTimeMillis();
 		System.out.println("loading database...");
 		//lion.cap.sneakers.*
 		if(animal.equalsIgnoreCase("Löwe.Kappe.Turnschuhe.Blau"))

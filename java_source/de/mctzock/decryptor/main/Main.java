@@ -1,13 +1,11 @@
 package de.mctzock.decryptor.main;
 
-import de.mctzock.decryptor.gui.FullScreen;
-import de.mctzock.decryptor.gui.HomeGUI;
+import de.mctzock.decryptor.gui.LogoAnimation;
 
 public class Main {
 
-	public static void main(String[] args) {
-		System.out.println("Loading GUI");
-		HomeGUI.show();
-		FullScreen.show();
+	public static void main(String[] args) throws Exception {
+		System.out.println("Starting!");
+		LogoAnimation.show();
 	}
 }

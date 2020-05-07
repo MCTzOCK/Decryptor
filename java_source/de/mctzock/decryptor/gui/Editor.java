@@ -15,14 +15,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.rtf.RTFEditorKit;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Editor {
 
@@ -64,8 +69,10 @@ public class Editor {
 		file.setFont(new Font("Lato", Font.BOLD, 30));
 		JMenu control = new JMenu("Steuerung");
 		control.setFont(new Font("Lato", Font.BOLD, 30));
-		JMenuItem encrypt = new JMenuItem("Ver-/Entschlüsseln");
+		JMenuItem encrypt = new JMenuItem("Verschlüsseln");
+		JMenuItem decrypt = new JMenuItem("Entschlüsseln");
 		encrypt.setFont(new Font("Lato", Font.BOLD, 30));
+		decrypt.setFont(new Font("Lato", Font.BOLD, 30));
 		JMenuItem save = new JMenuItem("Speichern...");
 		save.setFont(new Font("Lato", Font.BOLD, 30));
 		JMenuItem back_to_home = new JMenuItem("Zurück zum Haupt Bildschrim");
@@ -75,6 +82,7 @@ public class Editor {
 		JMenuItem load = new JMenuItem("Laden...");
 		load.setFont(new Font("Lato", Font.BOLD, 30));
 		file.add(encrypt);
+		file.add(decrypt);
 		file.add(save);
 		file.add(load);
 		control.add(back_to_home);
@@ -99,7 +107,15 @@ public class Editor {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				Encrypt.choose_encryption(editorPane.getText());
+				Encrypt.choose_encryption(editorPane.getText(), "enc");
+			}
+		});
+		decrypt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				Encrypt.choose_encryption(editorPane.getText(), "dec");
 			}
 		});
 		save.addActionListener(new ActionListener() {
@@ -174,6 +190,7 @@ public class Editor {
 				frame_panel.add(no);
 				jf.getContentPane().add(frame_panel);
 				jf.setSize(600, 600);
+				frame_panel.setBackground(new Color(0,0,0,0));
 				jf.setLocationRelativeTo(null);
 				jf.setAlwaysOnTop(true);
 				jf.setBackground(new Color(0,0,0,0));
@@ -198,5 +215,24 @@ public class Editor {
 				});
 			}
 		});
+	}
+	public static void loadRTF(JEditorPane edit, File f)
+	{
+		RTFEditorKit rtf = new RTFEditorKit();
+		edit.setEditorKit(rtf);
+		try {
+			FileInputStream finput = new FileInputStream(f);
+			rtf.read(finput, edit.getDocument(), 0);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

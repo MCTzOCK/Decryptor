@@ -44,6 +44,7 @@ public class ShowAnimal {
 	 */
 	private void initialize(String animal, String text, String operation) {
 		frame = new JFrame();
+		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 1316, 1021);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setUndecorated(true);
@@ -84,6 +85,14 @@ public class ShowAnimal {
 		frame.getContentPane().add(yes);
 		
 		JButton no = new JButton("Nein");
+		no.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				Animal_Choose.show(text, operation);
+			}
+		});
 		no.setFont(new Font("Lato", Font.BOLD, 60));
 		no.setBounds(685, 845, 535, 151);
 		frame.getContentPane().add(no);

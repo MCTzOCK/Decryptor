@@ -11,8 +11,10 @@ public class FullScreen {
 	private JFrame frame;
 	/**
 	 * @wbp.nonvisual location=501,439
+	 * @author Bensi
+	 * @category cryptographie
 	 */
-	private final JLabel label = new JLabel(new ImageIcon("assets/bin/fs.png"));
+	private final JLabel label = new JLabel(new ImageIcon("assets/bin/fs.jpg"));
 
 	/**
 	 * Launch the application.

@@ -14,11 +14,14 @@ import javax.swing.JProgressBar;
 import javax.swing.JTable;
 
 import de.mctzock.decryptor.engine.Animal_Choose;
+import de.mctzock.decryptor.engine.Animal_compile;
 import de.mctzock.decryptor.engine.Caeser;
+import de.mctzock.decryptor.engine.HexCode;
+import de.mctzock.decryptor.engine.PerfCaeser;
 
 public class Encrypt {
 
-	private JFrame frame;
+	public static JFrame frame;
 	private JButton very_unsecured;
 	private JButton unsecured;
 	private JButton secured;
@@ -26,15 +29,15 @@ public class Encrypt {
 	private JButton caeser;
 	private JButton animal;
 	private JButton rsa_2048;
-
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void choose_encryption(String text) {
+	public static void choose_encryption(String text, String operation) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Encrypt window = new Encrypt(text);
+					Encrypt window = new Encrypt(text, operation);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,14 +49,14 @@ public class Encrypt {
 	/**
 	 * Create the application.
 	 */
-	public Encrypt(String text) {
-		initialize(text);
+	public Encrypt(String text, String operation) {
+		initialize(text, operation);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(String text) {
+	private void initialize(String text, String operation) {
 		frame = new JFrame();
 		frame.getContentPane().setEnabled(false);
 		frame.setBounds(100, 100, 1350, 813);
@@ -108,94 +111,86 @@ public class Encrypt {
 		caeser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				JFrame jf = new JFrame();
-				jf.setUndecorated(true);
-				jf.setAlwaysOnTop(true);
-				JPanel jp = new JPanel();
-				JLabel jl = new JLabel("<html><body><h1 style='font-size:30px; color: green;'>Was willst du tuen?</h1></body></html>");
-				JButton enc = new JButton("<html><h1 style='font-size:30px; color: green;'>Verschlüsseln</h1></body></html>");
-				JButton dec = new JButton("<html><h1 style='font-size:30px; color: green;'>Entschlüsseln</h1></body></html>");
-				jf.setBackground(new Color(0,0,0,0));
-				jp.add(jl);
-				jp.add(enc);
-				jp.add(dec);
-				jp.setBackground(new Color(0,0,0,0));
-				jf.getContentPane().add(jp);
-				jf.setSize(1000,1000);
-				jf.setLocationRelativeTo(null);
-				jf.setVisible(true);
-				
-				enc.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						jf.setVisible(false);
-						Caeser.enc(text);
-					}
-				});
-				dec.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						jf.setVisible(false);
-						Caeser.dec(text);
-					}
-				});
+				if(operation == "dec")
+				{
+					Caeser.dec(text);
+				}else if(operation == "enc")
+				{
+					Caeser.enc(text);
+				}
 			}
 		});
 		caeser.setFont(new Font("Lato", Font.BOLD, 28));
 		caeser.setBounds(28, 253, 279, 57);
 		frame.getContentPane().add(caeser);
 		
-		animal = new JButton("Tier (caeser.adv)");
+		animal = new JButton("Tier");
 		animal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				JFrame jf = new JFrame();
-				jf.setUndecorated(true);
-				jf.setAlwaysOnTop(true);
-				JPanel jp = new JPanel();
-				JLabel jl = new JLabel("<html><body><h1 style='font-size:30px; color: green;'>Was willst du tuen?</h1></body></html>");
-				JButton enc = new JButton("<html><h1 style='font-size:30px; color: green;'>Verschlüsseln</h1></body></html>");
-				JButton dec = new JButton("<html><h1 style='font-size:30px; color: green;'>Entschlüsseln</h1></body></html>");
-				jf.setBackground(new Color(0,0,0,0));
-				jp.add(jl);
-				jp.add(enc);
-				jp.add(dec);
-				jp.setBackground(new Color(0,0,0,0));
-				jf.getContentPane().add(jp);
-				jf.setSize(1000,1000);
-				jf.setLocationRelativeTo(null);
-				jf.setVisible(true);
-				
-				enc.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						jf.setVisible(false);
-						Animal_Choose.show(text, "enc");
-					}
-				});
-				dec.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						jf.setVisible(false);
-						Animal_Choose.show(text, "dec");
-					}
-				});
+				Animal_Choose.show(text, operation);
 			}
 		});
 		animal.setFont(new Font("Lato", Font.BOLD, 28));
-		animal.setBounds(28, 324, 279, 57);
+		animal.setBounds(317, 253, 279, 57);
 		frame.getContentPane().add(animal);
 		
 		rsa_2048 = new JButton("RSA(2048)");
+		rsa_2048.setEnabled(false);
 		rsa_2048.setFont(new Font("Lato", Font.BOLD, 28));
 		rsa_2048.setBounds(895, 253, 279, 57);
 		frame.getContentPane().add(rsa_2048);
+		
+		JButton btnCaserfortgeschritten = new JButton("Caser(fortg.)");
+		btnCaserfortgeschritten.setFont(new Font("Lato", Font.BOLD, 28));
+		btnCaserfortgeschritten.setBounds(317, 321, 279, 57);
+		btnCaserfortgeschritten.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				de.mctzock.decryptor.gui.PerfCaeser.showView(text, operation);
+			}
+		});
+		frame.getContentPane().add(btnCaserfortgeschritten);
+		
+		JButton btnAes = new JButton("AES(2048)");
+		btnAes.setFont(new Font("Lato", Font.BOLD, 28));
+		btnAes.setEnabled(false);
+		btnAes.setBounds(895, 321, 279, 57);
+		frame.getContentPane().add(btnAes);
+		
+		JButton btnBild = new JButton("Bild");
+		btnBild.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					frame.setVisible(false);
+					if(operation.equals("enc"))
+					{
+						HexCode.enc(text);
+					}
+					if(operation.equals("dec"))
+					{
+						HexCode.dec();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnBild.setFont(new Font("Lato", Font.BOLD, 28));
+		btnBild.setBounds(606, 253, 279, 57);
+		frame.getContentPane().add(btnBild);
 		frame.setLocationRelativeTo(null);
 		frame.setAlwaysOnTop(true);
+		frame.setLocationRelativeTo(null);
+		frame.setAlwaysOnTop(true);
+		frame.setLocationRelativeTo(null);
+		frame.setAlwaysOnTop(true);
+		frame.setLocationRelativeTo(null);
+		frame.setAlwaysOnTop(true);
+		
 		
 	}
 }

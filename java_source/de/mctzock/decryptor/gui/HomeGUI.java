@@ -76,7 +76,7 @@ public class HomeGUI {
 				jp.add(jl);
 				jp.add(ok_close);
 				jp.setBackground(new Color(0,0,0,0));
-				jf.add(jp);
+				jf.getContentPane().add(jp);
 				jf.setSize(1000,1000);
 				jf.setLocationRelativeTo(null);
 				jf.setVisible(true);
@@ -96,7 +96,7 @@ public class HomeGUI {
 		JButton anleitung = new JButton("Anleitung ");
 		anleitung.setForeground(new Color(0, 128, 0));
 		anleitung.setFont(new Font("Tahoma", Font.BOLD, 31));
-		anleitung.setBounds(449, 175, 407, 151);
+		anleitung.setBounds(449, 180, 407, 147);
 		frmHome.getContentPane().add(anleitung);
 		anleitung.addActionListener(new ActionListener() {
 			
@@ -117,7 +117,7 @@ public class HomeGUI {
 		JLabel lblcopyrightc = new JLabel("<html><body><h1>Copyright (c) 2019 Ben Siebert. All rights reserved.</h1></body></html>");
 		lblcopyrightc.setForeground(Color.MAGENTA);
 		lblcopyrightc.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblcopyrightc.setBounds(31, 461, 824, 63);
+		lblcopyrightc.setBounds(28, 457, 824, 63);
 		frmHome.getContentPane().add(lblcopyrightc);
 		
 		JLabel lblNewLabel = new JLabel("Willkommen zum Decryptor version JuFoOKT2 von Ben Siebert.");
@@ -136,7 +136,7 @@ public class HomeGUI {
 		});
 		cmp.setFont(new Font("Tahoma", Font.BOLD, 39));
 		cmp.setForeground(new Color(0, 128, 0));
-		cmp.setBounds(10, 175, 407, 151);
+		cmp.setBounds(13, 179, 407, 147);
 		frmHome.getContentPane().add(cmp);
 	}
 }

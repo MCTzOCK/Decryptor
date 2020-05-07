@@ -14,6 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import de.mctzock.decryptor.engine.Animal_compile;
+
 import javax.swing.JEditorPane;
 
 public class Result {
@@ -24,6 +27,9 @@ public class Result {
 	 * Launch the application.
 	 */
 	public static void show(String text) {
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - Animal_compile.starttime;
+		System.out.println("Time: " + elapsedTime / 1000 + "s" + "(" + elapsedTime + "ms)");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -69,7 +75,7 @@ public class Result {
 		});
 		frame.getContentPane().add(copy);
 		
-		JButton home = new JButton("Hauptbildscihrm");
+		JButton home = new JButton("Hauptbildschirm");
 		home.setFont(new Font("Lato", Font.BOLD, 45));
 		home.setBounds(416, 886, 461, 87);
 		home.addActionListener(new ActionListener() {

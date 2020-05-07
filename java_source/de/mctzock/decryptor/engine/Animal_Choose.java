@@ -1,3 +1,4 @@
+
 package de.mctzock.decryptor.engine;
 
 import java.awt.Color;
@@ -48,11 +49,16 @@ public class Animal_Choose {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(String text, String operation) {
+		animal = "";
+		head = "";
+		foot = "";
+		color = "";
 		frame = new JFrame();
 		frame.setBounds(100, 100, 995, 881);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setUndecorated(true);
 		frame.setBackground(new Color(0,0,0,0));
+		frame.setAlwaysOnTop(true);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblBitteWhleEin = new JLabel("Bitte w\u00E4hle ein Tier, eine Kopfdeckung, Schuhe und eine Farbe!");
