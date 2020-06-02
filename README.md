@@ -1,3 +1,2 @@
-# Decryptor
-<h1>YouCrypt</h1>
-a MCTzOCK Company
+# Craftions Decryptor
+This is the Decryptor by MCTzOCK in our new style. *Download comming soon*
