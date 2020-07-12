@@ -14,3 +14,6 @@ Owner und Developer: MCTzOCK
 # Rechtliches
 
 [Besuchen Sie meine Homepage](http://mctzock.de/docs/Urheberrecht.pdf)
+
+# See Also
+http://github.com/CraftionsMC/Decryptor
