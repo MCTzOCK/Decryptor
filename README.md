@@ -1,3 +1,5 @@
+[https://travis-ci.org/MCTzOCK/Decryptor.svg?branch=master]
+
 # Decryptor
 Der Decryptor ist ein Programm, welches von mir (MCTzOCK) für den Wettbewerb Jugend Forscht erstellt worden ist. Mit diesem kann ein beliebiger Text mit verschiedenen Verschlüsselungen verschlüsselt und natürlich auch entschlüsselt werden.
 
