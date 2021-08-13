@@ -1,6 +1,7 @@
 # output
 bin
 *.jar
+dist
 
 # source list
 sources.txt
